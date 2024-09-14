@@ -1,0 +1,11 @@
+.index{
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    background-color: lightgrey;
+    font-size: 1.2em;
+}
+
+.opcoes{
+    font-size: 1em;
+}
