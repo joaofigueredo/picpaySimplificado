@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Email;
 use App\Models\User;
 use Error;
-use Illuminate\Container\Attributes\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Throwable;
 
 class HomeController extends Controller
@@ -24,7 +26,7 @@ class HomeController extends Controller
 
     public function transferencia(Request $request)
     {
-        if ($request->valor < 0) {
+        if ($request->valor < 0 || $request->valor == null) {
             return to_route('home.index')->withErrors('valor invalido');
         } else {
             if ($request->opcoes == 1) {
@@ -32,18 +34,33 @@ class HomeController extends Controller
                 $usuario = User::where('cpf', $cpf)->first();
                 $usuario->saldo += $request->valor;
                 $usuario->save();
-                return to_route('home.index')->with('mensagem.sucesso', 'Depositado realizado com sucesso!');
+                return view('home.index')->with('mensagemSucesso', 'Depositado realizado com sucesso!');
             } elseif ($request->opcoes == 2) {
                 try {
-                    $receptor = User::where('cpf', $request->cpf)->first();
+                    $destinatario = User::where('cpf', $request->cpf)->first();
 
-                    $receptor->saldo += $request->valor;
-                    $receptor->save();
+                    $destinatario->saldo += $request->valor;
+                    $destinatario->save();
 
-                    return to_route('home.index');
+                    $usuario = Auth::user();
+                    $usuarioNome = $usuario->name;
+                    $transferencia = [
+                        'valor' => $request->valor,
+                        'remetente' => $usuarioNome,
+                        'destinatario' => $destinatario->name
+                    ];
+
+                    // dd($destinatario->email);
+
+                    Mail::to($destinatario->email)->send(new Email($transferencia));
+
+
+                    return to_route('home.index')->with('mensagemSucesso', 'Transacao realizada com sucesso');
                 } catch (Throwable $e) {
-                    return to_route('home.index')->withErrors('Ação invalida');
+                    return to_route('home.index')->withErrors('CPF invalido');
                 }
+            } elseif ($request->cpf === null) {
+                return to_route('home.index')->withErrors('Opcao invalida!');
             }
         }
     }

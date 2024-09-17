@@ -38,6 +38,7 @@
         </ul>
     </div>
     @endif
+
     @isset($mensagemSucesso)
     <div class="alert alert-success" id="error-message">
         {{ $mensagemSucesso }}
