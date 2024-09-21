@@ -1,5 +1,8 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use Illuminate\Support\ServiceProvider;
+
 return [
 
     /*
@@ -27,6 +30,9 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -117,6 +123,10 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        AppServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+    ])->toArray(),
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),

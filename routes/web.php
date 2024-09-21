@@ -37,6 +37,4 @@ Route::middleware(Usuario::class)->group(function () {
         ->name('home.transferencia');
     Route::get('/contas', [HomeController::class, 'contas'])
         ->name('home.contas');
-    Route::get('/email', [MailController::class, 'enviarEmail'])
-        ->name('email');
 });

@@ -39,11 +39,11 @@
     </div>
     @endif
 
-    @isset($mensagemSucesso)
+    @if(session('mensagemSucesso'))
     <div class="alert alert-success" id="error-message">
-        {{ $mensagemSucesso }}
+        {{ session('mensagemSucesso') }}
     </div>
-    @endisset
+    @endif
     <script>
         setTimeout(function() {
             var errorMessage = document.getElementById('error-message');

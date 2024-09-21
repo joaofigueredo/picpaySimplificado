@@ -11,9 +11,7 @@ class MailController extends Controller
 {
     public function enviarEmail()
     {
-        $usuario = Auth::user();
-        $email = $usuario->email;
-        Mail::to($email)->send(new Email());
-        return view('home.index')->with('mensagemSucesso', 'email enviado com sucesso!');
+
+        return view('emails.email')->with('mensagemSucesso', 'email enviado com sucesso!');
     }
 }

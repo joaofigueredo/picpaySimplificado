@@ -33,7 +33,7 @@
                         @method('POST')
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Entre com um email válido" />
+                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Entre com um email válido" autofocus />
                             <label class="form-label" for="email">Email</label>
                         </div>
 

@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Transferencia;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,18 +12,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Email extends Mailable
+class Email extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $dados;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct($dados)
     {
-        $this->user = $user;
+        $this->dados = $dados;
     }
 
 
@@ -37,12 +39,12 @@ class Email extends Mailable
 
     public function build()
     {
+        $destinatario = $this->dados['destinatario'];
+        $valor = $this->dados['valor'];
+        $remetente = $this->dados['remetente'];
 
-        return $this->view('emails.email')
-            ->with([
-                'valor' => $this->user['valor'],
-                'remetente' => $this->user['remetente'],
-                'destinatario' => $this->user['destinatario']
-            ]);
+        return $this
+            ->view('emails.email')
+            ->with(['destinatario' => $destinatario, 'valor' => $valor, 'remetente' => $remetente]);
     }
 }

@@ -8,11 +8,13 @@
 </head>
 
 <body>
+
     <h1>transferencia realizada!</h1>
     <p>Olá {{ $destinatario }}!.</p>
     <p>
         Você recebeu uma transferência no valor de R${{ $valor }} realizado por {{ $remetente }}!
     </p>
+
 </body>
 
 </html>
