@@ -7,6 +7,7 @@
     <title>{{ $titulo }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    <script type="text/javascript" src="{{ asset('js/estilo.css') }}"></script>
 
 </head>
 
