@@ -43,7 +43,7 @@
             </fieldset>
         </div>
 
-
         <button type="submit" class="btn btn-primary">Criar</button>
+        <a href="{{ route('login') }}" class="btn btn-primary">Cancelar</button>
     </form>
 </x-layout>

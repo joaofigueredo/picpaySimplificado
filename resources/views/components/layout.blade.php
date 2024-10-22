@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
     <script type="text/javascript" src="{{ asset('js/estilo.css') }}"></script>
-
 </head>
 
 <body>
+    @auth
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
@@ -24,12 +24,12 @@
             </ul>
         </div>
 
-        @auth
         <div class="navbar-nav">
             <a href="{{ route('logout') }}" class="btn btn-danger">Sair</a>
         </div>
-        @endauth
+
     </nav>
+    @endauth
     @if ($errors->any())
     <div class="alert alert-danger" id="error-message">
         <ul>

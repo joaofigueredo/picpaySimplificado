@@ -61,7 +61,6 @@ class HomeController extends Controller
     public function contas()
     {
         $contas = DB::table('users')->orderby('name')->get();
-
         return view('home.contas')->with('contas', $contas);
     }
 }

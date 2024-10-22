@@ -3,17 +3,17 @@
         <form action="{{ route('home.transferencia') }}" method="get">
             @csrf
             @if(Auth::user()->usuario == 'usuario')
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 valor">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Valor</span>
+                    <span class="input-group-text valor" id="basic-addon1">Valor</span>
                 </div>
-                <input type="number" class="form-control" placeholder="Valor" name="valor" id="valor" aria-label="Valor" aria-describedby="basic-addon1"
+                <input type="text" class="form-control" placeholder="Valor" name="valor" id="valor" aria-label="Valor" aria-describedby="basic-addon1"
                     autofocus>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 opcoes">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Opções</label>
+                    <label class="input-group-text opcoes" for="inputGroupSelect01">Opções</label>
                 </div>
                 <select class="custom-select" id="opcoes" name="opcoes">
                     <option value="0">Selecione ...</option>
@@ -22,9 +22,9 @@
                 </select>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 cpf">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">CPF</span>
+                    <span class="input-group-text cpf" id="basic-addon1">CPF</span>
                 </div>
                 <input type="text" class="form-control" placeholder="CPF" aria-label="cpf" aria-describedby="basic-addon1" name="cpf" id="cpf" disabled>
             </div>
@@ -46,7 +46,9 @@
                     }
                 });
             </script>
-            <button type="submit" class="btn btn-primary" id="botaoConfirmar" disabled>Confirmar</button>
+            <div class="botao">
+                <button type="submit" class="btn btn-primary botaoConfirmar" id="botaoConfirmar" disabled>CONFIRMAR</button>
+            </div>
         </form>
     </div>
     @endif

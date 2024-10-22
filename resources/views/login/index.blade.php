@@ -33,18 +33,18 @@
                         @method('POST')
 
                         <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Entre com um email válido" autofocus />
+                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email" autofocus />
                             <label class="form-label" for="email">Email</label>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-3">
-                            <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter password" />
-                            <label class="form-label" for="form3Example4">Password</label>
+                            <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Senha" />
+                            <label class="form-label" for="form3Example4">Senha</label>
                         </div>
                         <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit">Login</button>
                         <div class="text-center text-lg-start mt-4 pt-2">
 
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? <a href="{{ route('users.create') }}" class="link-danger">Registrar</a></p>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? <a href="{{ route('users.create') }}" class="link-danger" style="text-decoration: none">Registrar</a></p>
                         </div>
 
                     </form>

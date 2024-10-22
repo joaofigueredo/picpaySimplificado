@@ -12,6 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Rotas de login
 Route::get('/login', [LoginController::class, 'login'])
     ->name('login');
 
@@ -21,18 +22,16 @@ Route::post('/login', [LoginController::class, 'store'])
 Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('logout');
 
+//Criação de usuario
 Route::get('/criar', [UserController::class, 'create'])
     ->name('users.create');
-
-
-
 Route::post('/store', [UserController::class, 'store'])
     ->name('users.store');
+
 
 Route::middleware(Usuario::class)->group(function () {
     Route::get('/home', [HomeController::class, 'index'])
         ->name('home.index');
-
     Route::get('/transferencia', [HomeController::class, 'transferencia'])
         ->name('home.transferencia');
     Route::get('/contas', [HomeController::class, 'contas'])

@@ -18,26 +18,13 @@ class UserController extends Controller
 
     public function store(UsuarioRequest $request)
     {
-        // dd($request->all());
-
         $data['cpf'] = $request->cpf;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $data['usuario'] = $request->opcoes;
 
-
         $data['password'] = Hash::make($data['password']);
-
-
-        // $user = User::create([
-        //     'cpf' => $data['cpf'],
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => $data['password'],
-        //     'usuario' => $data['usuario']
-        // ]);
-
 
         $user = new User;
         $user->cpf = $data['cpf'];
@@ -49,10 +36,6 @@ class UserController extends Controller
         $user->created_at = now();
         $user->updated_at = now();
         $user->save();
-
-
-
-
 
         Auth::login($user);
 

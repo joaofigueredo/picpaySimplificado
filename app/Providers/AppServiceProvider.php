@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Events\EnvioEmail;
-use App\Listeners\EnvioEmailListener;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

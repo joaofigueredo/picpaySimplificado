@@ -1,6 +1,6 @@
 <x-layout titulo="contas">
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table table-striped">
+        <thead>
             <tr>
                 <th scope="col">CPF</th>
                 <th scope="col">Nome</th>
@@ -13,11 +13,10 @@
             <tr>
                 <th scope="row">{{$conta->cpf}}</th>
                 <td>{{$conta->name}}</td>
-                <td>{{$conta->saldo}}</td>
+                <td>R$ {{number_format($conta->saldo, 2, ',', '.')}}</td>
                 <td>{{$conta->email}}</td>
             </tr>
             @endforeach
-
         </tbody>
     </table>
 </x-layout>

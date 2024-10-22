@@ -4,8 +4,33 @@
     flex-flow: wrap;
     background-color: lightgrey;
     font-size: 1.2em;
+    border-radius: 10px;
+    margin-left: 600px;
+    margin-right: 600px;
+    margin-top: 50px;
+    height: 350px;
 }
 
-.opcoes{
+.opcoes {
     font-size: 1em;
+    height: 40px;
+    padding: 30px;
+}
+
+.valor {
+    font-size: 1em;
+    height: 40px;
+    padding: 30px;
+}
+
+.cpf {
+    font-size: 1em;
+    height: 40px;
+    padding: 30px;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+    padding: 75px;
 }
